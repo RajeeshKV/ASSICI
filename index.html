@@ -19,8 +19,61 @@
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+  
+  body{background:#ECF0F1}
+
+.load{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);
+  /*change these sizes to fit into your project*/
+  width:100px;
+  height:100px;
+  z-index: 1000;
+}
+.load hr{border:0;margin:0;width:40%;height:40%;position:absolute;border-radius:50%;animation:spin 2s ease infinite}
+
+.load :first-child{background:#19A68C;animation-delay:-1.5s}
+.load :nth-child(2){background:#F63D3A;animation-delay:-1s}
+.load :nth-child(3){background:#FDA543;animation-delay:-0.5s}
+.load :last-child{background:#193B48}
+
+@keyframes spin{
+  0%,100%{transform:translate(0)}
+  25%{transform:translate(160%)}
+  50%{transform:translate(160%, 160%)}
+  75%{transform:translate(0, 160%)}
+}
+
+#overlay {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+</style>
+<script type="text/javascript">
+
+  $(window).on('load',function(){
+    $("#overlay").fadeOut();
+  });
+
+</script>
 </head>
 <body>
+
+<!--Preloader -->
+
+<div id="overlay">
+  <div class="load">
+  <hr/><hr/><hr/><hr/>
+</div>
+</div>
 
 <!-- Navigation -->
   <header id="header">
@@ -34,9 +87,9 @@
 
      <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li><a href="index.html#intro">Home</a></li>
+          <li><a href="#intro">Home</a></li>
           <li><a href="#about">About Us</a></li>
-          <li><a href="image.php">Gallery</a></li>
+          <li><a href="#">Gallery</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -54,8 +107,8 @@
             <div class="carousel-background"><img src="img/carousel/1.jpg" alt=""></div>
               <div class="carousel-container">
                 <div class="carousel-content">
-                 <h3>GET TO KNOW ABOUT US</h3>
-                  <a href="#about" class="btn-get-started scrollto">Explore</a>
+                 <h3 class="animated fadeInRight">GET TO KNOW ABOUT US</h3>
+                  <a href="#about" class="btn-get-started scrollto animated fadeInLeft">Explore</a>
                 </div>
               </div>
             </div>
@@ -84,11 +137,26 @@
   </div>
 </section>
 
-<!--- Jumbotron -->
-
-
-<!--- Welcome Section -->
-
+<!--- About Section -->
+<section id="about">
+  <div class="container animated fadeInUp">
+    <header class="section-header">
+      <h3>About us</h3>
+    </header>
+    <div class="about-content">
+      <div class="row">
+        <div class="col-md-6">
+          <p>
+             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+        </div>
+        <div class="col-md-6">
+         <img src="img/carousel/2.jpg" class="img-responsive">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!--- Three Column Section -->
 
@@ -109,7 +177,69 @@
 
 
 <!--- Two Column Section -->
+ <section id="contact" class="section-bg animated fadeInUp" data-wow-delay="0.6s">
+      <div class="container">
 
+        <div class="section-header">
+          <h3>Contact Us</h3>
+          </div>
+
+        <div class="row contact-info">
+
+          <div class="col-md-4">
+            <div class="contact-address">
+              <i class="ion-ios-location-outline"></i>
+              <h3>Address</h3>
+              <address>House Name, PO Address, Place</address>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-phone">
+              <i class="ion-ios-telephone-outline"></i>
+              <h3>Phone Number</h3>
+              <p><a href="tel:+919999999999">+91 999 999 9999</a></p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-email">
+              <i class="ion-ios-email-outline"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:info@example.com">info@example.com</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form">
+          <div id="sendmessage">Your message has been sent. Thank you!</div>
+          <div id="errormessage"></div>
+          <form action="" method="post" role="form" class="contactForm">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+              <div class="validation"></div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+
+      </div>
+    </section>
 
 <!--- Connect -->
 
@@ -119,7 +249,7 @@
       <div class="copyright">&copy; Copyright <strong>ASSISI EMS Neruvambram</strong>. All Rights Reserved
       </div>
       <div class="credits">
-    Designed and Developed by Rajeesh KV
+    Designed and Developed by <strong>Rajeesh KV</strong>
       </div><br>
     <div class="social">
     <ul class="social-network social-circle">
